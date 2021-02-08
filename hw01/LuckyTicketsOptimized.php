@@ -25,12 +25,7 @@ class LuckyTicketsOptimized implements TaskInterface
         // возводим в степень каждый элемент нужного значения и суммируем
 
         $result = array_sum(
-            array_map(
-                function ($el) {
-                    return pow($el, 2);
-                },
-                $nkMap[$n]
-            )
+            array_map(fn($el) => pow($el, 2), $nkMap[$n])
         );
 
         return (string) $result;
