@@ -8,16 +8,14 @@ class LuckyTicketsOptimized implements TaskInterface
 {
     public function run(string $input): string
     {
-        $n = (int) $input;
-
         // строим N(k) таблицу
 
         $nkMap = [1 => [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
-        for ($i = 2; $i <= $n; $i++) {
-            for ($j = 0; $j <= $i * 9; $j++) {
-                for ($k = $j; $k >= max(0, $j - 9); $k--) {
-                    $nkMap[$i][$j] += $nkMap[$i - 1][$k];
+        for ($n = 2; $n <= (int) $input; $n++) {
+            for ($k = 0; $k <= $n * 9; $k++) {
+                for ($l = $k; $l >= max(0, $k - 9); $l--) {
+                    $nkMap[$n][$k] += $nkMap[$n - 1][$l];
                 }
             }
         }
@@ -25,7 +23,7 @@ class LuckyTicketsOptimized implements TaskInterface
         // возводим в степень каждый элемент нужного значения и суммируем
 
         $result = array_sum(
-            array_map(fn($el) => pow($el, 2), $nkMap[$n])
+            array_map(fn($el) => pow($el, 2), $nkMap[(int) $input])
         );
 
         return (string) $result;
