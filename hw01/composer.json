@@ -1,0 +1,15 @@
+{
+    "name": "evgeniy.glebov/hw01-php",
+    "authors": [
+        {
+            "name": "evgeniy.glebov",
+            "email": "evgeniy.glebov@quadcode.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"Main\\": ""}
+    },
+    "require-dev": {
+    }
+}
